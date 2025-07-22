@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: new-app
+    image: medi24bd_headless_dev:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "3050:3050"
+    restart: unless-stopped
+    volumes:
+      # Uncomment if your app uses uploads or persistent data
+      # - ./uploads:/app/uploads
+      - .env:/app/.env
